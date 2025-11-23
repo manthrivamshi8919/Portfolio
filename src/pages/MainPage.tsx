@@ -253,7 +253,7 @@ const MainPage = () => {
                     className="border-2 border-gray-300 dark:border-gray-600"
                   >
                     <a 
-                      href="https://drive.google.com/file/d/17nc-cR6xFOjOQ8cDEYA07Arws_wDQn4Z/view?usp=sharing"
+                      href="https://drive.google.com/file/d/1gAv8Tv-uL77f0HQShcFZZBtCQIhMDT0S/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center"
