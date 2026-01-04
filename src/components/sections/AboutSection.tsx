@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import { FaReact, FaNodeJs, FaJs, FaJava, FaHtml5, FaCss3Alt, FaGithub } from "react-icons/fa";
 import { SiMongodb, SiExpress, SiTypescript, SiTailwindcss } from "react-icons/si";
 
 const AboutSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   // Technologies
   const technologies = [
     { name: "Java", icon: <FaJava className="text-orange-500" /> },
@@ -57,15 +61,15 @@ const AboutSection = () => {
 
   return (
     <section 
+      ref={sectionRef}
       id="about" 
       className=""
     >
       <div className="container mx-auto px-4 py-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl mx-auto text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
@@ -80,10 +84,9 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Education */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
             <h3 className="text-2xl font-semibold mb-6">Education</h3>
             <div className="space-y-6">
@@ -101,10 +104,9 @@ const AboutSection = () => {
 
           {/* Experience */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           >
             <h3 className="text-2xl font-semibold mb-6">Experience</h3>
             <div className="space-y-6">
@@ -131,10 +133,9 @@ const AboutSection = () => {
 
         {/* Skills */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
           className="mt-16"
         >
           <h3 className="text-2xl font-semibold mb-8 text-center">My Skills</h3>
@@ -143,9 +144,8 @@ const AboutSection = () => {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.8 + index * 0.1, ease: "easeOut" }}
                 className="flex flex-col items-center justify-center p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow duration-300 w-28 h-28"
               >
                 <div className="text-3xl mb-2">{tech.icon}</div>
