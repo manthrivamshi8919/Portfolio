@@ -5,6 +5,7 @@ import { useState } from "react";
 type Certification = {
   id: number;
   name: string;
+  issuer: string;
   image: string;
   certId?: string;
   issueDate?: string;
@@ -14,6 +15,7 @@ const certifications: Certification[] = [
   {
     id: 1,
     name: "AI & Cloud Virtual Internship",
+    issuer: "Edunet Foundation (AICTE)",
     image: "/certificates/AI&Cloud_page-0001.jpg",
     certId: "STU63a011fac6c081671434746",
     issueDate: "March 2024"
@@ -21,6 +23,7 @@ const certifications: Certification[] = [
   {
     id: 2,
     name: "Full Stack Development Internship",
+    issuer: "EY / Edunet",
     image: "/certificates/Full stack development_page-0001.jpg",
     certId: "INTERNSHIP_170662655565b90dfb357f2",
     issueDate: "April 2024"
@@ -28,13 +31,17 @@ const certifications: Certification[] = [
   {
     id: 3,
     name: "AI and ML in IOT and its Applications workshop in NIT",
+    issuer: "NIT Warangal",
     image: "/certificates/NIT.jpg",
     certId: "-",
     issueDate: "October 2023"
   },
+  // Commented out certifications
+  /*
   {
     id: 4,
     name: "Salesforce Administrator Virtual Internship",
+    issuer: "Salesforce",
     image: "/certificates/salesforce admin_page-0001.jpg",
     certId: "SISFVIPAD2024-2856",
     issueDate: "July 2024"
@@ -42,10 +49,12 @@ const certifications: Certification[] = [
   {
     id: 5,
     name: "Salesforce Developer Virtual Internship",
+    issuer: "Salesforce",
     image: "/certificates/salesforce developer_page-0001.jpg",
     certId: "SISFVIPAD2024-95080",
     issueDate: "July 2024"
   }
+  */
 ];
 
 const Certifications = () => {
@@ -73,6 +82,7 @@ const Certifications = () => {
               />
               <div className="p-4">
                 <h3 className="text-lg font-semibold text-center">{cert.name}</h3>
+                <p className="text-sm text-blue-600 dark:text-blue-400 font-medium text-center mb-2">{cert.issuer}</p>
                 <div className="mt-2 text-sm text-gray-600 text-center">
                   {cert.certId && <div>ID: {cert.certId}</div>}
                   {cert.issueDate && <div>Issued: {cert.issueDate}</div>}
@@ -114,6 +124,7 @@ const Certifications = () => {
                 />
                 <div className="p-6">
                   <h2 className="text-2xl font-bold text-center mb-2">{selectedCert.name}</h2>
+                  <p className="text-lg text-blue-600 dark:text-blue-400 font-medium text-center mb-4">{selectedCert.issuer}</p>
                   <div className="text-center text-gray-600 mb-4">
                     {selectedCert.certId && <div className="mb-1">Certificate ID: {selectedCert.certId}</div>}
                     {selectedCert.issueDate && <div>Issued: {selectedCert.issueDate}</div>}

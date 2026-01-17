@@ -7,8 +7,8 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { name: "Home", id: "home" },
   { name: "About", id: "about" },
+  { name: "Skills", id: "skills" },
   { name: "Projects", id: "projects" },
-  { name: "Certifications", id: "certifications" },
   { name: "Contact", id: "contact" },
 ];
 
@@ -69,7 +69,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             className="font-bold text-2xl text-gradient cursor-pointer"
           >
-            Portfolio
+            │ Vamshi
           </motion.div>
         </button>
 

@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import PageTransition from "@/components/PageTransition";
 import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -18,6 +19,9 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Initialize EmailJS
+  emailjs.init("H2GXxF81QaAfz7DYr"); // Replace with your EmailJS public key
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -25,24 +29,54 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'manthrivamshi1@gmail.com'
+      };
+
+      const response = await emailjs.send(
+        'service_y4xztm4',    // Replace with your EmailJS service ID
+        'template_z60oqc6',    // Replace with your EmailJS template ID
+        templateParams
+      );
+
+      if (response.status === 200) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
       toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+        title: "Error",
+        description: "Failed to send message. Please check your connection and try again.",
+        variant: "destructive",
       });
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const contactInfo = [

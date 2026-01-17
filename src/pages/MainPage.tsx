@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
+import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import CertificationsSection from "@/components/sections/CertificationsSection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -8,6 +9,7 @@ import ContactSection from "@/components/sections/ContactSection";
 const MainPage = () => {
   // Refs for navigation
   const contactRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
 
   // Scroll to section function
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
@@ -15,12 +17,13 @@ const MainPage = () => {
   };
 
   return (
-    <div className="space-y-20">
-      <HeroSection contactRef={contactRef} scrollToSection={scrollToSection} />
+    <div>
+      <HeroSection contactRef={contactRef} projectsRef={projectsRef} scrollToSection={scrollToSection} />
       <AboutSection />
-      <ProjectsSection />
+      <SkillsSection />
+      <ProjectsSection ref={projectsRef} />
       <CertificationsSection />
-      <ContactSection />
+      <ContactSection ref={contactRef} />
     </div>
   );
 };

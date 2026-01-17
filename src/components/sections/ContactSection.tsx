@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, forwardRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -7,8 +7,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
-const ContactSection = () => {
+const ContactSection = forwardRef<HTMLDivElement>((props, ref) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -17,8 +18,12 @@ const ContactSection = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>(null);
+  const sectionRef = (ref as React.RefObject<HTMLDivElement>) || internalRef;
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  // Initialize EmailJS
+  emailjs.init("H2GXxF81QaAfz7DYr");
 
   // Form handling
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -26,24 +31,54 @@ const ContactSection = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'manthrivamshi1@gmail.com'
+      };
+
+      const response = await emailjs.send(
+        'service_y4xztm4',    // Replace with your EmailJS service ID
+        'template_z60oqc6',   // Replace with your EmailJS template ID
+        templateParams
+      );
+
+      if (response.status === 200) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
       toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+        title: "Error",
+        description: "Failed to send message. Please check your connection and try again.",
+        variant: "destructive",
       });
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   // Contact info
@@ -57,11 +92,20 @@ const ContactSection = () => {
 
   return (
     <section 
-      ref={sectionRef}
+      ref={ref || internalRef}
       id="contact" 
-      className=""
+      className="relative bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-50 dark:from-slate-950 dark:via-blue-950/20 dark:to-slate-950"
     >
-      <div className="container mx-auto px-4 py-20">
+      {/* Ambient Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/2 to-cyan-500/2 dark:from-blue-500/5 dark:to-cyan-500/5 rounded-full blur-3xl"></div>
+      </div>
+
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,.01)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,.01)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(59,130,246,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,.02)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+      <div className="container mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -230,6 +274,8 @@ const ContactSection = () => {
       </div>
     </section>
   );
-};
+});
+
+ContactSection.displayName = 'ContactSection';
 
 export default ContactSection;
