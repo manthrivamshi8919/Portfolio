@@ -67,7 +67,7 @@ const AboutSection = () => {
       description: "Contributed to production-ready features and worked on real client-facing modules while collaborating with cross-functional teams.",
       responsibilities: [
         "Developing and maintaining scalable web applications",
-        "Working with React, JavaScript, TypeScript, Node.js, and MongoDB",
+        "Working with React, JavaScript, TypeScript, Node.js, and Cosmos DB",
         "Implementing REST APIs and JWT authentication",
         "Collaborating with development team on live projects",
         "Contributing to production-ready features",
@@ -83,14 +83,14 @@ const AboutSection = () => {
       className="relative bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-50 dark:from-slate-950 dark:via-blue-950/20 dark:to-slate-950"
     >
       {/* Ambient Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/2 to-cyan-500/2 dark:from-blue-500/5 dark:to-cyan-500/5 rounded-full blur-3xl"></div>
       </div>
 
       {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,.01)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,.01)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(59,130,246,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,.02)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,.01)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,.01)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(59,130,246,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,.02)_1px,transparent_1px)] bg-[size:100px_100px] pointer-events-none"></div>
       <div className="container mx-auto px-4 py-16 relative z-10">
         <motion.div
           ref={titleRef}
@@ -238,7 +238,7 @@ const AboutSection = () => {
                     <span>Full Stack Development</span>
                   </div>
                 </div>
-                <div className="text-blue-600 dark:text-blue-400 text-xs font-medium mt-4">6+ months</div>
+                <div className="text-blue-600 dark:text-blue-400 text-xs font-medium mt-4"></div>
               </div>
             </motion.div>
 
