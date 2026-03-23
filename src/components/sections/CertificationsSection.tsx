@@ -5,6 +5,13 @@ import { useRef, useState } from "react";
 // Certifications data
 const certifications = [
   {
+    id: 0,
+    name: "Generative AI",
+    issuer: "SkillMove",
+    image: "/certificates/Gen AI-Manthri Vamshi Certificate.png",
+    issueDate: "2025"
+  },
+  {
     id: 1,
     name: "AI & Cloud Virtual Internship",
     issuer: "Edunet Foundation (AICTE)",
@@ -52,9 +59,9 @@ const CertificationsSection = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [selectedCert, setSelectedCert] = useState<any>(null);
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="certifications" 
+      id="certifications"
       className="relative bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-50 dark:from-slate-950 dark:via-blue-950/20 dark:to-slate-950"
     >
       {/* Ambient Background Elements */}
@@ -87,10 +94,13 @@ const CertificationsSection = () => {
               initial={{ opacity: 0, y: 50, rotateY: 15 }}
               animate={isInView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1, ease: "easeOut" }}
-              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+              className={`bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer flex flex-col ${certifications.length % 3 === 1 && index === certifications.length - 1
+                ? "lg:col-start-2"
+                : ""
+                }`}
               onClick={() => setSelectedCert(cert)}
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-48 overflow-hidden bg-gray-100 dark:bg-gray-900 flex shrink-0 border-b border-gray-100 dark:border-gray-700">
                 <img
                   src={cert.image}
                   alt={cert.name}
@@ -114,7 +124,7 @@ const CertificationsSection = () => {
             </motion.div>
           ))}
         </div>
-        
+
         {/* Modal for enlarged certificate view */}
         <AnimatePresence>
           {selectedCert && (

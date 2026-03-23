@@ -7,7 +7,7 @@ import { SiMongodb, SiExpress, SiTypescript, SiTailwindcss, SiScikitlearn, SiNum
 const SkillsSection = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  
+
   // Individual refs for each skill category
   const frontendRef = useRef(null);
   const backendRef = useRef(null);
@@ -15,7 +15,7 @@ const SkillsSection = () => {
   const mlRef = useRef(null);
   const genAiRef = useRef(null);
   const advancedAiRef = useRef(null);
-  
+
   const frontendInView = useInView(frontendRef, { once: true, margin: "-100px" });
   const backendInView = useInView(backendRef, { once: true, margin: "-100px" });
   const coreInView = useInView(coreRef, { once: true, margin: "-100px" });
@@ -136,9 +136,9 @@ const SkillsSection = () => {
   };
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="skills" 
+      id="skills"
       className="relative bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-50 dark:from-slate-950 dark:via-blue-950/20 dark:to-slate-950"
     >
       {/* Ambient Background Elements */}
@@ -162,12 +162,12 @@ const SkillsSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-8"></div>
           <p className="text-gray-600 dark:text-gray-300 text-lg">
-            Comprehensive expertise spanning modern web development, machine learning, and cutting-edge AI technologies.
+            From frontend interfaces to backend systems, cloud infrastructure, and cutting-edge Generative AI the full-stack depth that powers production systems.
           </p>
         </motion.div>
         {/* Main Skills Grid - Frontend & Backend */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          <motion.div 
+          <motion.div
             ref={frontendRef}
             initial={{ opacity: 0, x: -50 }}
             animate={frontendInView ? { opacity: 1, x: 0 } : {}}
@@ -179,11 +179,11 @@ const SkillsSection = () => {
             <div className="relative h-80 md:h-96 flex items-end justify-center">
               {/* Platform Shadow */}
               <div className={`absolute bottom-0 w-full h-24 md:h-32 bg-gradient-to-t from-${skillCategories[0].shadowColor} to-transparent rounded-full blur-2xl`}></div>
-              
+
               {/* 3D Platform */}
               <div className="relative w-full max-w-sm md:max-w-md">
                 {/* Platform Surface */}
-                <div 
+                <div
                   className="relative h-20 md:h-24 rounded-full shadow-2xl"
                   style={{
                     background: skillCategories[0].gradient,
@@ -203,7 +203,7 @@ const SkillsSection = () => {
                       transition={{ delay: index * 0.2, ...floatAnimation.transition }}
                       className="group cursor-pointer"
                     >
-                      <div 
+                      <div
                         className="bg-card p-2 md:p-4 rounded-xl md:rounded-2xl shadow-lg md:shadow-xl hover:shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-4 border-card"
                         style={{ minWidth: "60px", maxWidth: "80px" }}
                       >
@@ -218,7 +218,7 @@ const SkillsSection = () => {
               </div>
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             ref={backendRef}
             initial={{ opacity: 0, x: 50 }}
             animate={backendInView ? { opacity: 1, x: 0 } : {}}
@@ -230,11 +230,11 @@ const SkillsSection = () => {
             <div className="relative h-80 md:h-96 flex items-end justify-center">
               {/* Platform Shadow */}
               <div className={`absolute bottom-0 w-full h-24 md:h-32 bg-gradient-to-t from-${skillCategories[1].shadowColor} to-transparent rounded-full blur-2xl`}></div>
-              
+
               {/* 3D Platform */}
               <div className="relative w-full max-w-sm md:max-w-md">
                 {/* Platform Surface */}
-                <div 
+                <div
                   className="relative h-20 md:h-24 rounded-full shadow-2xl"
                   style={{
                     background: skillCategories[1].gradient,
@@ -254,7 +254,7 @@ const SkillsSection = () => {
                       transition={{ delay: index * 0.2, ...floatAnimation.transition }}
                       className="group cursor-pointer"
                     >
-                      <div 
+                      <div
                         className="bg-card p-2 md:p-4 rounded-xl md:rounded-2xl shadow-lg md:shadow-xl hover:shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-4 border-card"
                         style={{ minWidth: "60px", maxWidth: "80px" }}
                       >
@@ -273,7 +273,7 @@ const SkillsSection = () => {
 
         {/* Additional Skills Sections */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          <motion.div 
+          <motion.div
             ref={coreRef}
             initial={{ opacity: 0, x: -50 }}
             animate={coreInView ? { opacity: 1, x: 0 } : {}}
@@ -285,11 +285,11 @@ const SkillsSection = () => {
             <div className="relative h-80 md:h-96 flex items-end justify-center">
               {/* Platform Shadow */}
               <div className={`absolute bottom-0 w-full h-24 md:h-32 bg-gradient-to-t from-${skillCategories[2].shadowColor} to-transparent rounded-full blur-2xl`}></div>
-              
+
               {/* 3D Platform */}
               <div className="relative w-full max-w-sm md:max-w-md">
                 {/* Platform Surface */}
-                <div 
+                <div
                   className="relative h-20 md:h-24 rounded-full shadow-2xl"
                   style={{
                     background: skillCategories[2].gradient,
@@ -309,7 +309,7 @@ const SkillsSection = () => {
                       transition={{ delay: index * 0.2, ...floatAnimation.transition }}
                       className="group cursor-pointer"
                     >
-                      <div 
+                      <div
                         className="bg-card p-2 md:p-4 rounded-xl md:rounded-2xl shadow-lg md:shadow-xl hover:shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-4 border-card"
                         style={{ minWidth: "60px", maxWidth: "80px" }}
                       >
@@ -324,7 +324,7 @@ const SkillsSection = () => {
               </div>
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             ref={mlRef}
             initial={{ opacity: 0, x: 50 }}
             animate={mlInView ? { opacity: 1, x: 0 } : {}}
@@ -336,11 +336,11 @@ const SkillsSection = () => {
             <div className="relative h-80 md:h-96 flex items-end justify-center">
               {/* Platform Shadow */}
               <div className={`absolute bottom-0 w-full h-24 md:h-32 bg-gradient-to-t from-${skillCategories[3].shadowColor} to-transparent rounded-full blur-2xl`}></div>
-              
+
               {/* 3D Platform */}
               <div className="relative w-full max-w-sm md:max-w-md">
                 {/* Platform Surface */}
-                <div 
+                <div
                   className="relative h-20 md:h-24 rounded-full shadow-2xl"
                   style={{
                     background: skillCategories[3].gradient,
@@ -360,7 +360,7 @@ const SkillsSection = () => {
                       transition={{ delay: index * 0.2, ...floatAnimation.transition }}
                       className="group cursor-pointer"
                     >
-                      <div 
+                      <div
                         className="bg-card p-2 md:p-4 rounded-xl md:rounded-2xl shadow-lg md:shadow-xl hover:shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-4 border-card"
                         style={{ minWidth: "60px", maxWidth: "80px" }}
                       >
@@ -375,7 +375,7 @@ const SkillsSection = () => {
               </div>
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             ref={genAiRef}
             initial={{ opacity: 0, x: -50 }}
             animate={genAiInView ? { opacity: 1, x: 0 } : {}}
@@ -387,11 +387,11 @@ const SkillsSection = () => {
             <div className="relative h-80 md:h-96 flex items-end justify-center">
               {/* Platform Shadow */}
               <div className={`absolute bottom-0 w-full h-24 md:h-32 bg-gradient-to-t from-${skillCategories[4].shadowColor} to-transparent rounded-full blur-2xl`}></div>
-              
+
               {/* 3D Platform */}
               <div className="relative w-full max-w-sm md:max-w-md">
                 {/* Platform Surface */}
-                <div 
+                <div
                   className="relative h-20 md:h-24 rounded-full shadow-2xl"
                   style={{
                     background: skillCategories[4].gradient,
@@ -411,7 +411,7 @@ const SkillsSection = () => {
                       transition={{ delay: index * 0.2, ...floatAnimation.transition }}
                       className="group cursor-pointer"
                     >
-                      <div 
+                      <div
                         className="bg-card p-2 md:p-4 rounded-xl md:rounded-2xl shadow-lg md:shadow-xl hover:shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-4 border-card"
                         style={{ minWidth: "60px", maxWidth: "80px" }}
                       >
@@ -426,7 +426,7 @@ const SkillsSection = () => {
               </div>
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             ref={advancedAiRef}
             initial={{ opacity: 0, x: 50 }}
             animate={advancedAiInView ? { opacity: 1, x: 0 } : {}}
@@ -438,11 +438,11 @@ const SkillsSection = () => {
             <div className="relative h-80 md:h-96 flex items-end justify-center">
               {/* Platform Shadow */}
               <div className={`absolute bottom-0 w-full h-24 md:h-32 bg-gradient-to-t from-${skillCategories[5].shadowColor} to-transparent rounded-full blur-2xl`}></div>
-              
+
               {/* 3D Platform */}
               <div className="relative w-full max-w-sm md:max-w-md">
                 {/* Platform Surface */}
-                <div 
+                <div
                   className="relative h-20 md:h-24 rounded-full shadow-2xl"
                   style={{
                     background: skillCategories[5].gradient,
@@ -462,7 +462,7 @@ const SkillsSection = () => {
                       transition={{ delay: index * 0.2, ...floatAnimation.transition }}
                       className="group cursor-pointer"
                     >
-                      <div 
+                      <div
                         className="bg-card p-2 md:p-4 rounded-xl md:rounded-2xl shadow-lg md:shadow-xl hover:shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-4 border-card"
                         style={{ minWidth: "60px", maxWidth: "80px" }}
                       >
@@ -480,15 +480,13 @@ const SkillsSection = () => {
         </div>
 
         {/* Bottom Description */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 6 * 0.2, ease: "easeOut" }}
           className="text-center mt-20 text-muted-foreground max-w-3xl mx-auto"
         >
           <p className="text-lg leading-relaxed">
-            Comprehensive expertise spanning modern web development, machine learning, and cutting-edge AI technologies. 
-            From crafting responsive user interfaces to building intelligent AI-powered systems with advanced capabilities.
           </p>
         </motion.div>
       </div>
