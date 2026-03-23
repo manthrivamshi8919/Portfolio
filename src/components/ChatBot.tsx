@@ -315,6 +315,22 @@ export default function ChatBot() {
           letter-spacing:0.03em;
         }
         .cb-footer span { color:#0ea5e9; font-weight:600; }
+
+        @media (max-width: 640px) {
+          .cb-fab {
+            bottom: 16px !important; right: 16px !important;
+            width: 50px; height: 50px;
+          }
+          .cb-panel {
+            bottom: 76px !important; right: 16px !important;
+            width: calc(100vw - 32px);
+            max-height: calc(100dvh - 92px);
+          }
+          .cb-msgs {
+            max-height: none;
+            flex: 1;
+          }
+        }
       `}</style>
 
       {/* ── Floating Trigger ─────────────────────────────────────── */}
@@ -323,7 +339,6 @@ export default function ChatBot() {
         aria-label="Open AI chatbot"
         className="cb-fab"
         onClick={() => setOpen((v) => !v)}
-        style={{ position: "fixed", bottom: 28, right: 28, zIndex: 9999 }}
         whileTap={{ scale: 0.92 }}
       >
         {/* Ripple rings */}

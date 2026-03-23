@@ -54,7 +54,7 @@ const HeroSection = ({ contactRef, projectsRef, scrollToSection }: HeroSectionPr
               </motion.div>
 
               <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.3] tracking-tight whitespace-nowrap"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.3] tracking-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3, duration: 0.8 }}
